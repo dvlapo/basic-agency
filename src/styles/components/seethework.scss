@@ -1,0 +1,169 @@
+@import '../variables';
+
+.heading-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: min(8rem, 6vw);
+    gap: 12em;
+    font-size: 1.6rem;
+    line-height: 1.15;
+
+    svg {
+        fill: $black;
+    }
+
+    @media (max-width: 1000px) {
+        display: block;
+
+        article {
+            width: 70%;
+            margin-bottom: 4em;
+        }
+
+        figure {
+            width: 70%;
+            margin-left: auto;
+        }
+    }
+
+    @media (max-width: 475px) {
+        article {
+            width: 100%;
+        }
+    }
+
+    article {
+        h1 {
+            font-size: clamp(1.5rem, 2.3vw + 1rem, 3.5rem);
+            margin-bottom: min(4rem, 10vw);
+            font-weight: 600;
+        }
+
+        a {
+            padding: 0.8em 2em;
+            outline: 1px solid $black;
+            border-radius: 100vmax;
+            font-weight: 700;
+            font-size: clamp(1.1rem, 0.2vw + 1.1rem, 1.2rem);
+            text-transform: uppercase;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            line-height: 1;
+
+            @media (min-width: 768px) {
+                // hover effect for laptop screens
+                span {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    background-color: $black;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: -1;
+                    transform: scaleY(0);
+                    transform-origin: bottom;
+                    transition: 0.4s;
+                }
+
+                &:hover {
+                    color: $white;
+                    outline: none;
+                }
+
+                &:hover span {
+                    transform: scaleY(1);
+                }
+            }
+        }
+    }
+}
+
+.thumbnails {
+    padding: min(8rem, 6vw);
+    padding-top: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    line-height: 1.2;
+    overflow-x: hidden;
+
+    a {
+        text-transform: uppercase;
+        font-size: clamp(1.2rem, 1.2vw + 0.9rem, 2rem);
+        font-weight: 500;
+        min-width: 380px;
+
+        @media (max-width: 1000px) {
+            min-width: 60vw;
+        }
+
+        .asset-container {
+            overflow: hidden;
+            img,
+            video {
+                transform: scale(1.1);
+                transition: 1s;
+            }
+        }
+
+        &:hover img {
+            transform: scale(1);
+        }
+
+        &:hover h2 {
+            text-decoration: underline;
+        }
+
+        section {
+            margin-top: 1em;
+            margin-left: 5%;
+            margin-right: auto;
+
+            p {
+                width: 60%;
+                font-size: 0.8em;
+                margin-top: 0.8em;
+
+                @media (max-width: 768px) {
+                    width: 80%;
+                }
+            }
+        }
+    }
+}
+
+.date-decor {
+    padding: min(8rem, 6vw);
+    padding-top: 0;
+    margin-top: min(8rem, 10vw);
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    .line {
+        height: 1px;
+        background-color: $black;
+    }
+
+    span {
+        display: block;
+        margin-top: 1.2rem;
+        font-size: clamp(1rem, 0.5vw + 0.9rem, 1.3rem);
+        font-weight: 500;
+    }
+
+    span.dot {
+        width: 0.8em;
+        height: 0.8em;
+        aspect-ratio: 1;
+        background-color: $black;
+        border-radius: 50%;
+        justify-self: end;
+    }
+}

@@ -1,0 +1,70 @@
+@import '../variables';
+
+.cursor-container {
+    display: inline-flex;
+    width: 160px;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+    z-index: 1;
+    transition: 0.25s;
+
+    @media (max-width: 768px) {
+        display: none;
+    }
+}
+
+span {
+    font-size: clamp(1rem, 2.7vw - 0.2rem, 1.5rem);
+    display: block;
+    font-weight: 700;
+}
+
+span.circle {
+    width: 6em;
+    height: 6em;
+    padding: min(4em, 10vw);
+    border-radius: 50%;
+    color: $black;
+    display: grid;
+    place-content: center;
+    text-transform: uppercase;
+    background-color: $pink;
+    transition: 0.4s;
+}
+
+.circle.scale-down {
+    transform: scale(0.7);
+}
+
+span.left {
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-right: 10px solid $pink;
+    transform: translateX(1rem);
+}
+
+span.right,
+span.left {
+    opacity: 0;
+    height: 0;
+    width: 0;
+    transition: 0.4s;
+}
+
+span.right {
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 10px solid $pink;
+    transform: translateX(-1rem);
+}
+
+.right.show,
+.left.show {
+    opacity: 1;
+    transform: translateX(0);
+}
