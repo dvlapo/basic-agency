@@ -68,12 +68,12 @@ function Featured() {
 
     // fns
     function grabAndScroll(e) {
-        if (grabbed === true) {
+        if (grabbed != true) {
+            return;
+        } else {
             let sliderOuter = document.querySelector('.slider-outer');
             sliderOuter.scrollLeft -= e.movementX;
-            setScrollbarOffset(sliderOuter.scrollLeft);
-        } else {
-            return;
+            setScrollbarOffset(sliderOuter.scrollLeft * 1.5);
         }
     }
 
