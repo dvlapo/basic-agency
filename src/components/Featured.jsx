@@ -8,7 +8,7 @@ import patagoniaLogo from '../assets/patagonia-dark.svg';
 import LocomotiveScroll from 'locomotive-scroll';
 import { useEffect, useRef, useState } from 'react';
 
-function Featured() {
+function Featured({ showArrows, setShowArrows }) {
     const featuredArr = [
         {
             img: googleLogo,
@@ -125,11 +125,21 @@ function Featured() {
                     });
                 }}
                 onMouseEnter={(e) => setHangCursor(false)}
-                onMouseDown={(e) => setGrabbed(true)}
-                onMouseUp={(e) => setGrabbed(false)}
+                onMouseDown={(e) => {
+                    setGrabbed(true);
+                    setShowArrows(true);
+                }}
+                onMouseUp={(e) => {
+                    setGrabbed(false);
+                    setShowArrows(false);
+                }}
                 ref={containerRef}
             >
-                <DragCursor styles={cursorStlyes} />
+                <DragCursor
+                    styles={cursorStlyes}
+                    showArrows={showArrows}
+                    setShowArrows={setShowArrows}
+                />
                 <div className='slider' onMouseMove={grabAndScroll}>
                     {featuredArr.map((details, idx) => {
                         return (

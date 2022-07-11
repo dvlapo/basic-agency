@@ -2,16 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../styles/components/dragcursor.scss';
 import gsap from 'gsap';
 
-function DragCursor({ styles }) {
-    const [showArrows, setShowArrows] = useState(false);
-
-    window.addEventListener('mousedown', () => {
-        setShowArrows(true);
-    });
-    window.addEventListener('mouseup', () => {
-        setShowArrows(false);
-    });
-
+function DragCursor({ styles, showArrows }) {
     const tl = gsap.timeline();
 
     useEffect(() => {
