@@ -7,11 +7,9 @@
     justify-content: center;
     gap: 1rem;
     position: absolute;
-    top: 50%;
-    right: 5%;
-    transform: translateY(-50%);
     z-index: 1;
     transition: 0.25s;
+    user-select: none;
 
     @media (max-width: 768px) {
         display: none;
@@ -37,8 +35,20 @@ span.circle {
     transition: 0.4s;
 }
 
-.circle.scale-down {
-    transform: scale(0.7);
+.text-container {
+    overflow-y: hidden;
+    width: min-content;
+    height: 1.8rem;
+    background-color: inherit;
+
+    .text {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.scale-down {
+    transform: scale(0.65);
 }
 
 span.left {

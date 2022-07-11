@@ -44,6 +44,7 @@ function Featured() {
 
     // states
     const [grabbed, setGrabbed] = useState(false);
+    const [hangCursor, setHangCursor] = useState(false);
     const [cursorX, setCursorX] = useState();
     const [cursorY, setCursorY] = useState();
     const [cursorStlyes, setCursorStyles] = useState({
@@ -52,19 +53,18 @@ function Featured() {
     });
     const [scrollbarOffset, setScrollbarOffset] = useState(0);
 
-    // const containerRef = useRef(null);
+    const containerRef = useRef(null);
 
-    // useEffect(() => {
-    //     if (containerRef) {
-    //         new LocomotiveScroll({
-    //             el: containerRef.current,
-    //             smooth: true,
-    //             direction: 'horizontal',
-    //             multiplier: 0.2,
-    //             lerp: 0.6,
-    //         });
-    //     }
-    // }, []);
+    useEffect(() => {
+        if (containerRef) {
+            new LocomotiveScroll({
+                el: containerRef.current,
+                smooth: true,
+                direction: 'horizontal',
+                // lerp: 0.02,
+            });
+        }
+    }, []);
 
     // fns
     function grabAndScroll(e) {
@@ -77,47 +77,60 @@ function Featured() {
         }
     }
 
-    function scrollOnly() {
+    function scrollOnly(e) {
         let sliderOuter = document.querySelector('.slider-outer');
-        sliderOuter.scrollLeft -= e.movementX;
         setScrollbarOffset(sliderOuter.scrollLeft);
     }
 
     function getMousePosition(e) {
-        let sliderOuter = document.querySelector('.slider-outer');
-        let sliderTop = sliderOuter.getBoundingClientRect().top;
-        let sliderLeft = sliderOuter.getBoundingClientRect().left;
+        setCursorX(e.clientX);
+        setCursorY(e.clientY);
 
-        // fix this
-        setCursorX(e.pageX - sliderLeft * 2);
-        setCursorY(e.pageY - sliderTop * 2.8);
+        let sliderOuter = document.querySelector('.slider-outer');
+
+        const cursor = document.querySelector('.cursor-container');
+        const slider = document.querySelector('.slider-outer');
+
+        const sliderRect = slider.getBoundingClientRect();
+
+        // center cursor
+        const cursorHalfWidth = cursor.getBoundingClientRect().width * 0.5;
+        const cursorHalfHeight = cursor.getBoundingClientRect().height * 0.5;
 
         setCursorStyles({
-            top: cursorY + 'px',
-            left: cursorX + 'px',
+            top: cursorY - sliderRect.top - cursorHalfHeight + 'px',
+            left:
+                cursorX -
+                sliderRect.left +
+                sliderOuter.scrollLeft -
+                cursorHalfWidth +
+                'px',
         });
     }
 
     return (
-        <section>
+        <section className={`featured-section ${hangCursor ? 'hang' : ''}`}>
             <h2>featured engagements</h2>
 
             <div
-                className='slider-outer'
+                className={`slider-outer ${hangCursor ? 'hang' : ''}`}
                 onMouseMove={getMousePosition}
-                onScroll={scrollOnly}
-                onMouseLeave={() =>
+                onScroll={(e) => scrollOnly()}
+                onMouseLeave={() => {
+                    setHangCursor(true);
                     setCursorStyles({
                         top: '50%',
                         right: '5%',
-                    })
-                }
+                        transform: 'translateY(-50%)',
+                    });
+                }}
+                onMouseEnter={(e) => setHangCursor(false)}
                 onMouseDown={(e) => setGrabbed(true)}
                 onMouseUp={(e) => setGrabbed(false)}
+                ref={containerRef}
             >
+                <DragCursor styles={cursorStlyes} />
                 <div className='slider' onMouseMove={grabAndScroll}>
-                    <DragCursor styles={cursorStlyes} />
-
                     {featuredArr.map((details, idx) => {
                         return (
                             <article key={idx}>

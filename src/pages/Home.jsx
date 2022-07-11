@@ -7,7 +7,7 @@ function Home() {
     return (
         <>
             {/* <Header /> */}
-            {/* <SeeTheWork /> */}
+            <SeeTheWork />
             <Featured />
         </>
     );

@@ -1,8 +1,12 @@
 @import '../variables';
 
-section {
+.featured-section {
     padding: min(8rem, 6vw);
     padding-right: 0;
+
+    &.hang {
+        position: relative;
+    }
 
     h2 {
         font-size: clamp(1.5rem, 3.8vw + 0.6rem, 4rem);
@@ -15,9 +19,13 @@ section {
     .slider-outer {
         overflow-x: scroll;
         position: relative;
-        // cursor: none;
+        cursor: none;
         -ms-overflow-style: none;
         scrollbar-width: none;
+
+        &.hang {
+            position: static;
+        }
 
         &::-webkit-scrollbar {
             display: none;
@@ -29,6 +37,7 @@ section {
         gap: min(9rem, 10vw);
         user-select: none;
         padding-bottom: min(12rem, 14vw);
+        transition: 0.8s;
 
         article {
             min-width: min(300px, 62vw);
@@ -82,12 +91,14 @@ section {
         height: 2px;
         background-color: lighten($black, 60);
         position: relative;
+        overflow: hidden;
 
         .scroll-bar-inner {
             width: 30%;
             height: 100%;
             background-color: $black;
             position: absolute;
+            transition: 0.8s;
             left: 0;
         }
     }
