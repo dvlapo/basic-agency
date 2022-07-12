@@ -16,7 +16,7 @@ function SeeTheWork() {
                         value.
                     </h1>
 
-                    <a href='/'>
+                    <a href='/' className='button-pill'>
                         <span></span> see the work
                     </a>
                 </article>

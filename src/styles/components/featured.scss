@@ -1,7 +1,7 @@
 @import '../variables';
 
 .featured-section {
-    padding: min(8rem, 6vw);
+    padding: min(8rem, 5vw);
     padding-right: 0;
 
     &.hang {
@@ -87,11 +87,15 @@
     }
 
     .scroll-bar-outer {
-        width: calc(100% - min(8rem, 6vw));
+        width: calc(100% - min(8rem, 5vw));
         height: 2px;
         background-color: lighten($black, 60);
         position: relative;
         overflow: hidden;
+
+        @media (max-width: 768px) {
+            height: 1px;
+        }
 
         .scroll-bar-inner {
             width: 30%;

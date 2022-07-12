@@ -1,0 +1,151 @@
+@import '../variables';
+
+.culture {
+    padding: min(8rem, 5vw);
+    display: flex;
+    justify-content: space-between;
+    gap: 5%;
+    color: $black;
+    background-color: $white;
+    transition: 2s;
+
+    a.button-pill-pink {
+        // outline: 1px solid $pink;
+        padding: 0.7em 2em;
+        outline: 1px solid $black;
+        border-radius: 100vmax;
+        font-weight: 700;
+        font-size: clamp(1.1rem, 0.2vw + 1.1rem, 1.2rem);
+        text-transform: uppercase;
+        color: inherit;
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+        line-height: 1;
+        z-index: 1;
+
+        @media (min-width: 768px) {
+            // hover effect for laptop screens
+            span {
+                display: block;
+                width: 100%;
+                height: 100%;
+                background-color: $black;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                transform: scaleY(0);
+                transform-origin: bottom;
+                transition: 0.4s;
+            }
+
+            &:hover {
+                color: $white;
+                outline: none;
+            }
+
+            &:hover span {
+                transform: scaleY(1);
+            }
+        }
+    }
+
+    &.inView {
+        color: $pink;
+        background-color: $black;
+
+        ::selection {
+            color: $black;
+            background-color: $white;
+        }
+
+        a.button-pill-pink {
+            outline: 1px solid $pink;
+
+            @media (min-width: 768px) {
+                // hover effect for laptop screens
+                span {
+                    background-color: $pink;
+                }
+
+                &:hover {
+                    color: $black;
+                }
+            }
+        }
+    }
+
+    .culture__videocontainer {
+        max-width: 45%;
+    }
+
+    .culture__text {
+        font-size: clamp(2.5rem, 5vw + 1.6rem, 8rem);
+        width: 50%;
+
+        p {
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 0.9;
+            letter-spacing: -2px;
+
+            span.connect {
+                display: flex;
+                font-size: inherit;
+                font-weight: inherit;
+
+                .dot {
+                    font-size: 1em;
+                    margin-right: 0.7em;
+                }
+
+                > * {
+                    font-size: inherit;
+                    font-weight: inherit;
+                }
+            }
+        }
+
+        .spotlight {
+            display: block;
+            margin-block: 3rem min(5rem, 5vw);
+            text-transform: uppercase;
+            font-size: 0.25em;
+            font-weight: 600;
+
+            strong {
+                font-weight: 800;
+            }
+        }
+    }
+
+    @media (max-width: 720px) {
+        flex-direction: column-reverse;
+        gap: min(8rem, 10vw);
+
+        .culture__videocontainer {
+            max-width: 100%;
+        }
+
+        .culture__text {
+            width: 100%;
+            margin-block: 2rem min(3rem, 5vw);
+
+            p {
+                span.connect {
+                    display: inline-flex;
+
+                    .dot {
+                        margin-right: 0;
+                    }
+                }
+            }
+
+            .spotlight {
+                font-weight: 500;
+                font-size: 0.4em;
+            }
+        }
+    }
+}

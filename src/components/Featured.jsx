@@ -68,10 +68,10 @@ function Featured({ showArrows, setShowArrows }) {
 
     // fns
     function grabAndScroll(e) {
+        let sliderOuter = document.querySelector('.slider-outer');
         if (grabbed != true) {
             return;
         } else {
-            let sliderOuter = document.querySelector('.slider-outer');
             sliderOuter.scrollLeft -= e.movementX;
             setScrollbarOffset(sliderOuter.scrollLeft * 1.5);
         }
