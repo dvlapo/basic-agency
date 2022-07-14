@@ -20,23 +20,23 @@ function App() {
     //     });
     // }, []);
 
-    useEffect(() => {
-        const el = document.querySelector('.culture');
-        const app = document.querySelector('.App');
-        const tl = gsap.timeline();
+    // useEffect(() => {
+    //     const el = document.querySelector('.culture');
+    //     const app = document.querySelector('.App');
+    //     const tl = gsap.timeline();
 
-        tl.to(app, {
-            scrollTrigger: {
-                trigger: el,
-                toggleClass: {
-                    targets: app,
-                    className: 'dark-theme',
-                },
-                start: 'top center',
-                end: '+=500',
-            },
-        });
-    }, []);
+    //     tl.to(app, {
+    //         scrollTrigger: {
+    //             trigger: el,
+    //             toggleClass: {
+    //                 targets: app,
+    //                 className: 'dark-theme',
+    //             },
+    //             start: 'top center',
+    //             end: '+=500',
+    //         },
+    //     });
+    // }, []);
 
     return (
         <div className='App'>

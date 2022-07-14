@@ -1,0 +1,222 @@
+@import '../variables';
+
+.footer-top {
+    padding: min(8rem, 5vw);
+    padding-block: 10rem;
+    background-color: $black;
+    color: $white;
+
+    @media (max-width: 768px) {
+        padding-block: 6rem;
+    }
+
+    > section {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 10rem;
+
+        .footer-logo {
+            fill: $white;
+            width: 5rem;
+        }
+
+        p {
+            font-size: 3rem;
+            font-weight: 600;
+            width: 50%;
+            margin-left: auto;
+            line-height: 1;
+
+            a {
+                position: relative;
+                display: inline-block;
+
+                &::before,
+                &::after {
+                    content: '';
+                    width: 100%;
+                    height: 2px;
+                    background-color: $white;
+                    position: absolute;
+                    left: 0;
+                    bottom: -0.6rem;
+                    transition: 0.2s;
+                }
+
+                &::before {
+                    transform-origin: right;
+                }
+
+                &::after {
+                    transform-origin: left;
+                    transform: scaleX(0);
+                    transition-delay: 0.2s;
+                }
+
+                &:hover::before {
+                    transform: scaleX(0);
+                }
+
+                &:hover::after {
+                    transform: scaleX(1);
+                }
+            }
+        }
+
+        @media (max-width: 1200px) {
+            display: block;
+            margin-bottom: 8rem;
+
+            .footer-logo {
+                margin-bottom: 5rem;
+            }
+
+            p {
+                margin-left: 0;
+                width: 90%;
+                font-size: 2rem;
+            }
+        }
+    }
+
+    h6 {
+        font-size: 1.8rem;
+        text-transform: uppercase;
+        position: relative;
+        margin-left: 2rem;
+
+        @media (max-width: 1000px) {
+            font-size: 1.4rem;
+        }
+
+        &::before {
+            content: '';
+            width: 0.7em;
+            height: 0.7em;
+            background-color: $white;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translate(-2rem, -55%);
+        }
+    }
+
+    .input-field {
+        margin-top: 1.6rem;
+        position: relative;
+        border-bottom: 1px solid $white;
+        padding-bottom: 6rem;
+
+        ::placeholder {
+            color: $white;
+        }
+
+        ::-ms-input-placeholder {
+            color: $white;
+        }
+
+        input {
+            font-size: 1.7rem;
+            color: inherit;
+            background-color: transparent;
+            border: none;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+
+            &:focus {
+                outline: none;
+            }
+
+            @media (max-width: 768px) {
+                font-size: 1.5rem;
+            }
+        }
+
+        svg {
+            fill: $white;
+            width: 1.8rem;
+            position: absolute;
+            right: 0;
+            bottom: 2rem;
+        }
+    }
+
+    .links {
+        display: grid;
+        grid-template-columns: auto 50%;
+        gap: 12rem;
+        align-items: start;
+
+        .connect-container {
+            display: flex;
+            justify-content: space-between;
+
+            .connect {
+                h6 {
+                    margin-bottom: 2rem;
+
+                    @media (max-width: 768px) {
+                        margin-bottom: 2rem;
+                    }
+                }
+
+                li {
+                    &::before {
+                        display: none;
+                    }
+                }
+
+                a {
+                    font-size: 1.6rem;
+                    font-weight: 500;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+
+        @media (max-width: 1000px) {
+            grid-template-columns: 1fr;
+            gap: 4rem;
+
+            .connect-container {
+                flex-direction: column;
+                gap: 4rem;
+
+                .connect {
+                    a {
+                        font-size: 1.4rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.footer-copyright {
+    background-color: darken($black, 4);
+    padding: 2rem 8rem;
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+
+    @media (max-width: 1000px) {
+        display: block;
+        text-align: center;
+        padding: 2rem;
+    }
+
+    span {
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: darken($white, 70);
+
+        a:hover {
+            text-decoration: underline;
+        }
+    }
+}

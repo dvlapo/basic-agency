@@ -1,9 +1,5 @@
 @import '../variables';
 
-// .container {
-//     background-color: $white;
-// }
-
 .heading-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -57,10 +53,10 @@ a.button-pill {
     overflow: hidden;
     display: inline-block;
     line-height: 1;
+    z-index: 2;
 
     @media (min-width: 768px) {
         // hover effect for laptop screens
-
         span {
             display: block;
             width: 100%;
@@ -75,13 +71,13 @@ a.button-pill {
             transition: 0.4s;
         }
 
+        &:hover span {
+            transform: scaleY(1);
+        }
+
         &:hover {
             color: $white;
             outline: none;
-        }
-
-        &:hover span {
-            transform: scaleY(1);
         }
     }
 }
@@ -97,9 +93,10 @@ a.button-pill {
 
     a {
         text-transform: uppercase;
-        font-size: clamp(1.2rem, 1.2vw + 0.9rem, 2rem);
-        font-weight: 500;
+        font-size: clamp(1.2rem, 0.8vw + 1rem, 1.75rem);
+        font-weight: 600;
         min-width: 380px;
+        color: inherit;
 
         @media (max-width: 1000px) {
             min-width: 60vw;
@@ -107,8 +104,7 @@ a.button-pill {
 
         .asset-container {
             overflow: hidden;
-            img,
-            video {
+            img {
                 transform: scale(1.1);
                 transition: 1s;
             }

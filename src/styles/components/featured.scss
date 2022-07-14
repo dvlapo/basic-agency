@@ -8,7 +8,7 @@
         position: relative;
     }
 
-    h2 {
+    h1 {
         font-size: clamp(1.5rem, 3.8vw + 0.6rem, 4rem);
         width: min-content;
         text-transform: uppercase;
@@ -36,7 +36,7 @@
         display: flex;
         gap: min(9rem, 10vw);
         user-select: none;
-        padding-bottom: min(12rem, 14vw);
+        // padding-bottom: min(12rem, 14vw);
         transition: 0.8s;
 
         article {
@@ -92,6 +92,7 @@
         background-color: lighten($black, 60);
         position: relative;
         overflow: hidden;
+        margin-top: min(12rem, 14vw);
 
         @media (max-width: 768px) {
             height: 1px;

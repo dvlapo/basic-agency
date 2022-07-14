@@ -110,7 +110,7 @@ function Featured({ showArrows, setShowArrows }) {
 
     return (
         <section className={`featured-section ${hangCursor ? 'hang' : ''}`}>
-            <h2>featured engagements</h2>
+            <h1>featured engagements</h1>
 
             <div
                 className={`slider-outer ${hangCursor ? 'hang' : ''}`}
