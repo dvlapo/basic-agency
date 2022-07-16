@@ -8,40 +8,28 @@ import { useEffect } from 'react';
 gsap.registerPlugin(ScrollTrigger);
 
 function Culture() {
-    const cultureRef = useRef(null);
     const textRef = useRef(null);
 
-    useEffect(() => {
-        const el = cultureRef.current;
-        const text = textRef.current;
-        const tl = gsap.timeline();
+    // useEffect(() => {
+    //     const text = textRef.current;
+    //     const tl = gsap.timeline();
 
-        tl.to(el, {
-            scrollTrigger: {
-                trigger: el,
-                // scroller: el,
-                toggleClass: {
-                    targets: el,
-                    className: 'inView',
-                },
-                start: 'top center',
-                end: '+=500',
-            },
-        }).to(text, {
-            scrollTrigger: {
-                trigger: text,
-                // pin: true,
-                start: 'bottom bottom',
-                end: '+=150',
-            },
-        });
-    }, []);
+    //     tl.to(text, {
+    //         scrollTrigger: {
+    //             trigger: text,
+    //             pin: true,
+    //             pinSpacing: 'margin',
+    //             start: 'top 80px',
+    //             // end: 'bottom bottom',
+    //         },
+    //     });
+    // }, []);
 
     return (
-        <section ref={cultureRef} className='culture'>
+        <section className='culture'>
             <div ref={textRef} className='culture__text'>
                 <p>
-                    BASIC/DEPT® helps brands{' '}
+                    BASIC/DEPT® helps brands
                     <span className='connect'>
                         <span className='dot'>●</span>
                         <span>connect</span>

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import locomotiveScroll from 'locomotive-scroll';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
+import Loader from './components/Loader';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,32 +17,49 @@ function App() {
     //     new locomotiveScroll({
     //         el: app,
     //         smooth: true,
-    //         lerp: 0.07,
+    //         lerp: 0.3,
     //     });
     // }, []);
 
-    // useEffect(() => {
-    //     const el = document.querySelector('.culture');
-    //     const app = document.querySelector('.App');
-    //     const tl = gsap.timeline();
+    useEffect(() => {
+        const el = document.querySelector('.culture');
+        const app = document.querySelector('.App');
+        const tl = gsap.timeline();
 
-    //     tl.to(app, {
-    //         scrollTrigger: {
-    //             trigger: el,
-    //             toggleClass: {
-    //                 targets: app,
-    //                 className: 'dark-theme',
-    //             },
-    //             start: 'top center',
-    //             end: '+=500',
-    //         },
-    //     });
-    // }, []);
+        tl.to('.App', {
+            scrollTrigger: {
+                trigger: '.culture',
+                toggleClass: {
+                    targets: ['.App', '.culture'],
+                    className: 'dark-theme',
+                },
+                start: 'top center',
+                end: '50%',
+            },
+        });
+    }, []);
+
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 4500);
+    }, [isLoading]);
 
     return (
-        <div className='App'>
-            <Home showArrows={showArrows} setShowArrows={setShowArrows} />
-        </div>
+        <>
+            {isLoading ? (
+                <Loader />
+            ) : (
+                <div className='App'>
+                    <Home
+                        showArrows={showArrows}
+                        setShowArrows={setShowArrows}
+                    />
+                </div>
+            )}
+        </>
     );
 }
 

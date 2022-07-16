@@ -2,7 +2,10 @@
 
 .featured-section {
     padding: min(8rem, 5vw);
-    padding-right: 0;
+
+    @media (min-width: 1000px) {
+        padding-right: 0;
+    }
 
     &.hang {
         position: relative;
@@ -20,15 +23,18 @@
         overflow-x: scroll;
         position: relative;
         cursor: none;
-        -ms-overflow-style: none;
-        scrollbar-width: none;
 
-        &.hang {
-            position: static;
-        }
+        @media (min-width: 1000px) {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
 
-        &::-webkit-scrollbar {
-            display: none;
+            &.hang {
+                position: static;
+            }
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
         }
     }
 
@@ -94,8 +100,8 @@
         overflow: hidden;
         margin-top: min(12rem, 14vw);
 
-        @media (max-width: 768px) {
-            height: 1px;
+        @media (max-width: 1000px) {
+            visibility: hidden;
         }
 
         .scroll-bar-inner {

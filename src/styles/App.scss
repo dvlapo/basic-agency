@@ -8,10 +8,34 @@
 .App {
     background-color: $white;
     color: $black;
-    transition: 2s;
+    transition: color 1s cubic-bezier(0.72, 0, 0.28, 1),
+        background-color 0.65s cubic-bezier(0.72, 0, 0.28, 1);
 }
 
 .dark-theme {
     background-color: $black;
     color: $pink;
+
+    a[class='button-pill'] {
+        outline: 1px solid $pink;
+
+        @media (min-width: 768px) {
+            // hover effect for laptop screens
+            span {
+                background-color: $pink;
+            }
+
+            &:hover {
+                color: $black;
+            }
+        }
+    }
+
+    .scroll-bar-outer {
+        background-color: darken($white, 30);
+
+        .scroll-bar-inner {
+            background-color: $pink;
+        }
+    }
 }

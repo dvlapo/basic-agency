@@ -1,0 +1,50 @@
+@import '../variables';
+
+.loader {
+    height: 100vh;
+    display: grid;
+    place-content: center;
+    color: $black;
+    position: relative;
+    background-color: $white;
+
+    .fold {
+        width: 100vw;
+        height: 100vh;
+        background-color: $white;
+        z-index: 200;
+        transform-origin: bottom;
+        position: absolute;
+        top: 0;
+        left: 0;
+        animation: foldUp 2s ease-out 2s;
+    }
+
+    @keyframes foldUp {
+        from {
+            transform: scaleY(0);
+        }
+        to {
+            transform: scaleY(1);
+        }
+    }
+
+    h1 {
+        font-size: clamp(4rem, 9vw + 1.9rem, 10rem);
+        line-height: 0.9;
+        width: 100%;
+        position: relative;
+
+        span {
+            font-size: inherit;
+        }
+
+        .r {
+            font-size: 0.5em;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            transform: translateX(100%);
+        }
+    }
+}

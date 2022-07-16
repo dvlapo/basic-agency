@@ -55,16 +55,16 @@ function Featured({ showArrows, setShowArrows }) {
 
     const containerRef = useRef(null);
 
-    useEffect(() => {
-        if (containerRef) {
-            new LocomotiveScroll({
-                el: containerRef.current,
-                smooth: true,
-                direction: 'horizontal',
-                // lerp: 0.02,
-            });
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (containerRef) {
+    //         new LocomotiveScroll({
+    //             el: containerRef.current,
+    //             smooth: true,
+    //             direction: 'horizontal',
+    //             // lerp: 0.02,
+    //         });
+    //     }
+    // }, []);
 
     // fns
     function grabAndScroll(e) {

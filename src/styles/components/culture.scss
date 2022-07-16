@@ -7,7 +7,8 @@
     gap: 5%;
     color: $black;
     background-color: $white;
-    transition: 2s;
+    transition: color 1s cubic-bezier(0.72, 0, 0.28, 1),
+        background-color 0.65s cubic-bezier(0.72, 0, 0.28, 1);
 
     a.button-pill-pink {
         // outline: 1px solid $pink;
@@ -51,7 +52,7 @@
         }
     }
 
-    &.inView {
+    &.dark-theme {
         color: $pink;
         background-color: $black;
 
