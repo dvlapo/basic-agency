@@ -6,10 +6,10 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import Loader from './components/Loader';
 
-gsap.registerPlugin(ScrollTrigger);
-
 function App() {
     const [showArrows, setShowArrows] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    gsap.registerPlugin(ScrollTrigger);
 
     // useEffect(() => {
     //     const app = document.querySelector('.App');
@@ -26,20 +26,24 @@ function App() {
         const app = document.querySelector('.App');
         const tl = gsap.timeline();
 
-        tl.to('.App', {
-            scrollTrigger: {
-                trigger: '.culture',
-                toggleClass: {
-                    targets: ['.App', '.culture'],
-                    className: 'dark-theme',
-                },
-                start: 'top center',
-                end: '50%',
-            },
-        });
-    }, []);
+        if (document.querySelector('.culture')) {
+            gsap.set(['.culture'], {
+                visibility: 'visible',
+            });
 
-    const [isLoading, setIsLoading] = useState(true);
+            tl.to('.culture', {
+                scrollTrigger: {
+                    trigger: '.culture',
+                    toggleClass: {
+                        targets: ['.culture'],
+                        className: 'dark-theme',
+                    },
+                    start: 'top center',
+                    end: '50%',
+                },
+            });
+        }
+    }, []);
 
     useEffect(() => {
         setTimeout(() => {

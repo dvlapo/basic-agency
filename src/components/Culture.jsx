@@ -39,7 +39,7 @@ function Culture() {
                 <span className='spotlight'>
                     Adweek <strong>(Agency Spotlight)</strong>
                 </span>
-                <a href='/' class='button-pill-pink'>
+                <a href='/' className='button-pill-pink'>
                     <span></span> About Us
                 </a>
             </div>

@@ -2,21 +2,26 @@ import React, { useEffect, useState } from 'react';
 import '../styles/components/header.scss';
 import reelLoop from '../assets/reel-loop.mp4';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
 
 function Header() {
     const [cursorX, setCursorX] = useState();
     const [cursorY, setCursorY] = useState();
+    const [vH, setVH] = useState();
     const [navHeight, setNavHeight] = useState();
     const [cursorStyles, setCursorStyles] = useState({
-        left: 0,
-        top: 0,
+        left: '50%',
+        top: '50%',
     });
+    const [scrollingUp, setScrollingUp] = useState(false);
+
+    gsap.registerPlugin(ScrollTrigger);
 
     window.addEventListener('mousemove', (e) => {
         setCursorX(e.pageX);
         setCursorY(e.pageY - 50);
 
-        if (e.pageY < navHeight) {
+        if (e.pageY < navHeight || e.pageY > vH) {
             setCursorStyles({
                 left: '50%',
                 top: '50%',
@@ -28,8 +33,27 @@ function Header() {
 
     useEffect(() => {
         const browserHeight = window.innerHeight;
+        setVH(browserHeight);
         setNavHeight(browserHeight * 0.2);
-    }, []);
+
+        ScrollTrigger.observe({
+            target: window,
+            type: 'wheel,touch,scroll',
+            onUp: () => {
+                // console.log(window.scrollY);
+                if (window.scrollY < vH) {
+                    setScrollingUp(false);
+                } else if (window.scrollY > vH) {
+                    setScrollingUp(true);
+                }
+            },
+            onDown: () => {
+                if (window.scrollY > vH) {
+                    setScrollingUp(false);
+                }
+            },
+        });
+    }, [scrollingUp]);
 
     const styles = {
         left: cursorX + 'px',
@@ -38,7 +62,7 @@ function Header() {
 
     return (
         <header className='header'>
-            {/* <nav>
+            <nav className={scrollingUp ? 'scrollUp' : 'scrollDown'}>
                 <a href='/' className='logo'>
                     basic/dept
                 </a>
@@ -78,9 +102,9 @@ function Header() {
                 </span>
             </nav>
 
-            <video className="header-video" src={reelLoop}>
+            <video className='header-video' autoPlay loop src={reelLoop}>
                 <source type='video/mp4' />
-            </video> */}
+            </video>
 
             <div
                 className='playreal-container'

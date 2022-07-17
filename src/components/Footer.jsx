@@ -22,7 +22,7 @@ function Footer() {
                         build.{' '}
                         <a
                             href='mailto:biz@basicagency.com'
-                            class='footer__contact-link'
+                            className='footer__contact-link'
                         >
                             biz@basicagency.com
                         </a>

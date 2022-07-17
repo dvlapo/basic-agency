@@ -44,7 +44,7 @@
         display: flex;
         align-items: flex-start;
         position: relative;
-        padding-bottom: 8rem;
+        padding-bottom: 10rem;
 
         @media (max-width: 768px) {
             padding-bottom: 0;
@@ -72,7 +72,6 @@
             }
 
             img {
-                aspect-ratio: 16/9;
                 object-fit: cover;
             }
         }
@@ -91,8 +90,8 @@
         }
 
         .list-details {
-            margin-left: min(3rem, 4vw);
-            width: 40%;
+            margin-left: min(2rem, 4vw);
+            width: 50%;
             display: flex;
             flex-direction: column;
             align-self: stretch;
