@@ -1,27 +1,28 @@
 import Home from './pages/Home';
 import './styles/App.scss';
 import { useEffect, useState } from 'react';
-import locomotiveScroll from 'locomotive-scroll';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import Loader from './components/Loader';
 
 function App() {
     const [showArrows, setShowArrows] = useState(false);
+    const [isNavOpen, setIsNavOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
-    gsap.registerPlugin(ScrollTrigger);
 
     // useEffect(() => {
-    //     const app = document.querySelector('.App');
+    //     gsap.registerPlugin(ScrollSmoother);
 
-    //     new locomotiveScroll({
-    //         el: app,
-    //         smooth: true,
-    //         lerp: 0.3,
+    //     ScrollSmoother.create({
+    //         smooth: 1,
+    //         effects: true,
+    //         smoothTouch: 0.1,
     //     });
     // }, []);
 
     useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+
         const el = document.querySelector('.culture');
         const app = document.querySelector('.App');
         const tl = gsap.timeline();
@@ -35,7 +36,7 @@ function App() {
                 scrollTrigger: {
                     trigger: '.culture',
                     toggleClass: {
-                        targets: ['.culture'],
+                        targets: ['.culture', app],
                         className: 'dark-theme',
                     },
                     start: 'top center',
@@ -53,16 +54,14 @@ function App() {
 
     return (
         <>
-            {isLoading ? (
-                <Loader />
-            ) : (
-                <div className='App'>
-                    <Home
-                        showArrows={showArrows}
-                        setShowArrows={setShowArrows}
-                    />
-                </div>
-            )}
+            <div className='App'>
+                <Home
+                    showArrows={showArrows}
+                    setShowArrows={setShowArrows}
+                    isNavOpen={isNavOpen}
+                    setIsNavOpen={setIsNavOpen}
+                />
+            </div>
         </>
     );
 }

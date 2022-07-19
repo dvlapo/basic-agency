@@ -5,7 +5,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { useRef } from 'react';
 import { useEffect } from 'react';
-gsap.registerPlugin(ScrollTrigger);
 
 function Culture() {
     const textRef = useRef(null);

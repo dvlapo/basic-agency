@@ -63,7 +63,12 @@ function SeeTheWork() {
                 </a>
                 <a href='/'>
                     <div className='asset-container'>
-                        <video autoPlay loop src={thumbnailGooglestore}></video>
+                        <video
+                            autoPlay
+                            loop
+                            muted
+                            src={thumbnailGooglestore}
+                        ></video>
                     </div>
                     <section>
                         <h2>google store</h2>
