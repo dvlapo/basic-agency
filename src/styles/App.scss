@@ -3,12 +3,9 @@
 @import 'reset';
 @import 'variables';
 @import 'base';
-@import 'utilities';
 
 .App {
     background-color: $white;
-    // background-image: url(../assets/grain-bg.jpg);
-    mix-blend-mode: color;
     color: $black;
     transition: color 1s cubic-bezier(0.72, 0, 0.28, 1),
         background-color 0.65s cubic-bezier(0.72, 0, 0.28, 1);
@@ -18,7 +15,7 @@
     background-color: $black;
     color: $pink;
 
-    a[class='button-pill'] {
+    a[class^='button'] {
         outline: 1px solid $pink;
 
         @media (min-width: 768px) {

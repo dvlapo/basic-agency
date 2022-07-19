@@ -54,14 +54,18 @@ function App() {
 
     return (
         <>
-            <div className='App'>
-                <Home
-                    showArrows={showArrows}
-                    setShowArrows={setShowArrows}
-                    isNavOpen={isNavOpen}
-                    setIsNavOpen={setIsNavOpen}
-                />
-            </div>
+            {isLoading ? (
+                <Loader />
+            ) : (
+                <div className='App'>
+                    <Home
+                        showArrows={showArrows}
+                        setShowArrows={setShowArrows}
+                        isNavOpen={isNavOpen}
+                        setIsNavOpen={setIsNavOpen}
+                    />
+                </div>
+            )}
         </>
     );
 }
