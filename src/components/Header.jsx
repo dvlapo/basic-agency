@@ -110,7 +110,11 @@ function Header({ setIsNavOpen }) {
                     </ul>
                 </nav>
 
-                <div className='three-dots'>
+                <div
+                    className='three-dots'
+                    role='button'
+                    onClick={() => setIsNavOpen(true)}
+                >
                     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21 5'>
                         <circle cx='2.5' cy='2.5' r='2.5'></circle>
                         <circle cx='10.5' cy='2.5' r='2.5'></circle>

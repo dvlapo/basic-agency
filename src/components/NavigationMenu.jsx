@@ -1,7 +1,37 @@
 import { useEffect, useState } from 'react';
 import '../styles/components/navigationmenu.scss';
 
-function NavigationMenu({ setIsNavOpen }) {
+function Initiative({ initiative }) {
+    return (
+        <li>
+            <div className='top'>
+                <div className='card'>
+                    <div className='img-wrapper'>
+                        <img src={initiative.imgSrc} alt='' />
+                    </div>
+
+                    <div className='text-content'>
+                        <section>
+                            <div>
+                                <h2>{initiative.heading}</h2>
+                                <p>{initiative.category}</p>
+                            </div>
+                            <div className='copy'>&copy;{initiative.year}</div>
+                        </section>
+
+                        <p>{initiative.details}</p>
+
+                        <a href='/'>{initiative.linkText}</a>
+                    </div>
+                </div>
+            </div>
+
+            <span>0{initiative.idx}</span>
+        </li>
+    );
+}
+
+function NavigationMenu({ initiatives, setIsNavOpen }) {
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
@@ -32,6 +62,22 @@ function NavigationMenu({ setIsNavOpen }) {
                         <path d='M204,17.2h-1.4v1.6h1.4c0.5,0,0.7-0.3,0.7-0.8C204.7,17.5,204.4,17.2,204,17.2z M203.9,16.4c1.2,0,1.8,0.5,1.8,1.6 c0,0.6-0.3,1.1-0.9,1.3l1.2,1.8h-1.2l-1.1-1.6h-1.2v1.6h-1.1v-4.7H203.9z'></path>
                     </svg>
                 </a>
+
+                <div className='internal-works'>
+                    <span className='dot'></span>
+                    <div>
+                        <span>(6)internal works</span>
+                        <span>&copy;2022 c/o basic/dept®</span>
+                    </div>
+
+                    <div>
+                        <span>
+                            a collection of internal projects and initiatives
+                            under the
+                        </span>
+                        <span>basic® brand</span>
+                    </div>
+                </div>
 
                 <button
                     role='button'
@@ -83,6 +129,12 @@ function NavigationMenu({ setIsNavOpen }) {
                     </li>
                 </ul>
             </nav>
+
+            <ul className='initiatives'>
+                {initiatives.map((initiative) => {
+                    return <Initiative initiative={initiative} />;
+                })}
+            </ul>
 
             <div className='menu-copyright'>
                 <span>BASIC/DEPT®, inc</span> <span>10 - 22©</span>

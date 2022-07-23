@@ -9,11 +9,20 @@ import NavigationMenu from '../components/NavigationMenu';
 import News from '../components/News';
 import SeeTheWork from '../components/SeeTheWork';
 
-function Home({ showArrows, setShowArrows, isNavOpen, setIsNavOpen }) {
+function Home({
+    initiatives,
+    showArrows,
+    setShowArrows,
+    isNavOpen,
+    setIsNavOpen,
+}) {
     return (
         <>
             {isNavOpen ? (
-                <NavigationMenu setIsNavOpen={setIsNavOpen} />
+                <NavigationMenu
+                    setIsNavOpen={setIsNavOpen}
+                    initiatives={initiatives}
+                />
             ) : (
                 <>
                     <Header setIsNavOpen={setIsNavOpen} />
