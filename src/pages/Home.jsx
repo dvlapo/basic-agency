@@ -22,6 +22,8 @@ function Home({
                 <NavigationMenu
                     setIsNavOpen={setIsNavOpen}
                     initiatives={initiatives}
+                    showArrows={showArrows}
+                    setShowArrows={setShowArrows}
                 />
             ) : (
                 <>

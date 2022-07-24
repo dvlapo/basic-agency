@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import '../styles/components/navigationmenu.scss';
+import DragCursor from './DragCursor';
 
 function Initiative({ initiative }) {
     return (
@@ -31,8 +32,59 @@ function Initiative({ initiative }) {
     );
 }
 
-function NavigationMenu({ initiatives, setIsNavOpen }) {
+function NavigationMenu({
+    initiatives,
+    setIsNavOpen,
+    showArrows,
+    setShowArrows,
+}) {
     const [isOpen, setIsOpen] = useState(false);
+
+    const [grabbed, setGrabbed] = useState(false);
+    const [hangCursor, setHangCursor] = useState(false);
+    const [cursorX, setCursorX] = useState();
+    const [cursorY, setCursorY] = useState();
+    const [cursorStlyes, setCursorStyles] = useState({
+        top: '50%',
+        right: '5%',
+        transform: 'translateY(-50%)',
+    });
+
+    function getMousePosition(e) {
+        setCursorX(e.clientX);
+        setCursorY(e.clientY);
+
+        let sliderOuter = document.querySelector('.initiatives');
+
+        const cursor = document.querySelector('.cursor-container');
+        const slider = document.querySelector('.initiatives');
+
+        const sliderRect = slider.getBoundingClientRect();
+
+        // center cursor
+        const cursorHalfWidth = cursor.getBoundingClientRect().width * 0.5;
+        const cursorHalfHeight = cursor.getBoundingClientRect().height * 0.5;
+
+        setCursorStyles({
+            top: cursorY - sliderRect.top - cursorHalfHeight + 'px',
+            left:
+                cursorX -
+                sliderRect.left +
+                sliderOuter.scrollLeft -
+                cursorHalfWidth +
+                'px',
+        });
+    }
+
+    function grabAndScroll(e) {
+        let sliderOuter = document.querySelector('.initiatives');
+        if (grabbed != true) {
+            return;
+        } else {
+            sliderOuter.scrollLeft -= e.movementX;
+            console.log(sliderOuter.scrollLeft);
+        }
+    }
 
     useEffect(() => {
         setTimeout(() => {
@@ -42,7 +94,7 @@ function NavigationMenu({ initiatives, setIsNavOpen }) {
 
     return (
         <div className={`nav-menu ${isOpen ? 'is-open' : ''}`}>
-        <div className="mask"></div>
+            <div className='mask'></div>
             <div className='menu-header'>
                 <a href='/'>
                     <svg
@@ -131,7 +183,33 @@ function NavigationMenu({ initiatives, setIsNavOpen }) {
                 </ul>
             </nav>
 
-            <ul className='initiatives'>
+            <ul
+                className='initiatives'
+                onMouseMove={(e) => {
+                    getMousePosition(e);
+                    grabAndScroll(e);
+                }}
+                onMouseLeave={() => {
+                    setCursorStyles({
+                        top: '50%',
+                        right: '5%',
+                        transform: 'translateY(-50%)',
+                    });
+                }}
+                onMouseDown={(e) => {
+                    setGrabbed(true);
+                    setShowArrows(true);
+                }}
+                onMouseUp={(e) => {
+                    setGrabbed(false);
+                    setShowArrows(false);
+                }}
+            >
+                <DragCursor
+                    styles={cursorStlyes}
+                    showArrows={showArrows}
+                    setShowArrows={setShowArrows}
+                />
                 {initiatives.map((initiative) => {
                     return <Initiative initiative={initiative} />;
                 })}
