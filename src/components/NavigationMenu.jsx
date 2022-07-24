@@ -42,6 +42,7 @@ function NavigationMenu({ initiatives, setIsNavOpen }) {
 
     return (
         <div className={`nav-menu ${isOpen ? 'is-open' : ''}`}>
+        <div className="mask"></div>
             <div className='menu-header'>
                 <a href='/'>
                     <svg

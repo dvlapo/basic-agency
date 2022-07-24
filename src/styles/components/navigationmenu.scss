@@ -97,7 +97,8 @@
         }
     }
 
-    .initiatives {
+    .initiatives,
+    .mask {
         display: none;
     }
 
@@ -117,6 +118,16 @@
 
     @media (min-width: 1000px) {
         padding-block: 4rem;
+
+        .mask {
+            display: block;
+            position: absolute;
+            inset: 0;
+            background-color: $black;
+            z-index: 4;
+            transition: 1s;
+            transform-origin: left;
+        }
 
         nav {
             display: none;
@@ -151,6 +162,9 @@
 
         .initiatives {
             display: flex;
+            position: relative;
+            left: 10%;
+            transition: 1.3s;
 
             li {
                 min-width: 370px;
@@ -246,6 +260,16 @@
                         max-width: 100%;
                     }
                 }
+            }
+        }
+
+        &.is-open {
+            .mask {
+                transform: scaleX(0);
+            }
+
+            .initiatives {
+                left: 0;
             }
         }
 
