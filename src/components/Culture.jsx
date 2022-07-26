@@ -1,13 +1,38 @@
 import cultureLoop from '../assets/Culture-Loop_v1.mp4';
 import '../styles/components/culture.scss';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 
 function Culture() {
-    const textRef = useRef(null);
+    const cultureRef = useRef(null);
+
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const el = cultureRef.current;
+        const main = document.querySelector('main');
+        // console.log(el, main);
+
+        const tl = gsap.timeline();
+
+        tl.to(el, {
+            scrollTrigger: {
+                trigger: el,
+                toggleClass: {
+                    targets: [main, el],
+                    className: 'dark-theme',
+                },
+                start: 'top center',
+                end: '50%',
+                lazy: false,
+            },
+        });
+    }, []);
 
     return (
-        <section className='culture'>
-            <div ref={textRef} className='culture__text'>
+        <section className='culture' ref={cultureRef}>
+            <div className='culture__text'>
                 <p>
                     BASIC/DEPT® helps brands
                     <span className='connect'>

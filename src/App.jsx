@@ -1,8 +1,6 @@
 import Home from './pages/Home';
 import './styles/App.scss';
 import { useEffect, useState } from 'react';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
 
 import Loader from './components/Loader';
 import initiativeImg01 from './assets/initiative-1.png';
@@ -68,27 +66,6 @@ function App() {
             linkText: 'Explore Applied',
         },
     ]);
-
-    useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
-
-        const el = document.querySelector('.culture');
-        const app = document.querySelector('.App');
-        const tl = gsap.timeline();
-
-        tl.to(el, {
-            ScrollTrigger: {
-                trigger: el,
-                toggleClass: {
-                    targets: [el, app],
-                    className: 'dark-theme',
-                },
-                start: 'top center',
-                end: '50%',
-                lazy: false,
-            },
-        });
-    }, []);
 
     useEffect(() => {
         setTimeout(() => {
