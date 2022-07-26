@@ -12,17 +12,17 @@ function Culture() {
         const el = cultureRef.current;
         const main = document.querySelector('main');
 
-        gsap.to(el, {
-            scrollTrigger: {
-                trigger: el,
-                toggleClass: {
-                    targets: [main, el],
-                    className: 'dark-theme',
-                },
-                start: 'top center',
-                end: '50%',
-            },
-        });
+        // gsap.to(el, {
+        //     scrollTrigger: {
+        //         trigger: el,
+        //         toggleClass: {
+        //             targets: [main, el],
+        //             className: 'dark-theme',
+        //         },
+        //         start: 'top center',
+        //         end: '50%',
+        //     },
+        // });
     }, []);
 
     return (
