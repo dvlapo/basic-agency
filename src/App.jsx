@@ -76,6 +76,8 @@ function App() {
         const tl = gsap.timeline();
 
         tl.to(el, {
+            lazy: false,
+
             scrollTrigger: {
                 trigger: el,
                 toggleClass: {
@@ -84,7 +86,6 @@ function App() {
                 },
                 start: 'top center',
                 end: '50%',
-                lazy: false,
             },
         });
     }, []);
