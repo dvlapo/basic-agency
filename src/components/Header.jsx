@@ -40,8 +40,8 @@ function Header({ setIsNavOpen }) {
         ScrollTrigger.observe({
             target: window,
             type: 'wheel,touch,scroll',
+            lazy: false,
             onUp: () => {
-                // console.log(window.scrollY);
                 if (window.scrollY < vH) {
                     setScrollingUp(false);
                 } else if (window.scrollY > vH) {
@@ -160,7 +160,7 @@ function Header({ setIsNavOpen }) {
             </video>
 
             <div
-                className='playreal-container'
+                className='playreel-container'
                 // style={{ marginTop: `${navHeight}px` }}
             >
                 <PlayReelBtn cursorStyles={cursorStyles} />

@@ -71,27 +71,22 @@ function App() {
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
 
-        if (document.querySelector('.culture')) {
-            gsap.set(['.culture'], {
-                visibility: 'visible',
-            });
+        const el = document.querySelector('.culture');
+        const app = document.querySelector('.App');
+        const tl = gsap.timeline();
 
-            const el = document.querySelector('.culture');
-            const app = document.querySelector('.App');
-            const tl = gsap.timeline();
-
-            tl.to(el, {
-                scrollTrigger: {
-                    trigger: el,
-                    toggleClass: {
-                        targets: [el, app],
-                        className: 'dark-theme',
-                    },
-                    start: 'top center',
-                    end: '50%',
+        tl.to(el, {
+            scrollTrigger: {
+                trigger: el,
+                toggleClass: {
+                    targets: [el, app],
+                    className: 'dark-theme',
                 },
-            });
-        }
+                start: 'top center',
+                end: '50%',
+                lazy: false,
+            },
+        });
     }, []);
 
     useEffect(() => {

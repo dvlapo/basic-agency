@@ -44,7 +44,7 @@ function Culture() {
             </div>
 
             <div className='culture__videocontainer'>
-                <video loop autoPlay src={cultureLoop}></video>
+                <video loop autoPlay muted src={cultureLoop}></video>
             </div>
         </section>
     );
