@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import '../styles/components/header.scss';
 import reelLoop from '../assets/reel-loop.mp4';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/all';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
 
 function Header({ setIsNavOpen }) {
     const [cursorX, setCursorX] = useState();
@@ -14,8 +15,6 @@ function Header({ setIsNavOpen }) {
         top: '50%',
     });
     const [scrollingUp, setScrollingUp] = useState(false);
-
-    gsap.registerPlugin(ScrollTrigger);
 
     window.addEventListener('mousemove', (e) => {
         setCursorX(e.pageX);
@@ -37,24 +36,24 @@ function Header({ setIsNavOpen }) {
 
         setNavHeight(browserHeight * 0.2);
 
-        ScrollTrigger.observe({
-            target: window,
-            type: 'wheel,touch,scroll',
-            lazy: false,
-            onUp: () => {
-                if (window.scrollY < vH) {
-                    setScrollingUp(false);
-                } else if (window.scrollY > vH) {
-                    setScrollingUp(true);
-                }
-            },
-            onDown: () => {
-                if (window.scrollY > vH) {
-                    setScrollingUp(false);
-                }
-            },
-        });
-    }, [scrollingUp]);
+        // ScrollTrigger.observe({
+        //     target: window,
+        //     type: 'wheel,touch,scroll',
+        //     lazy: false,
+        //     onUp: () => {
+        //         if (window.scrollY < vH) {
+        //             setScrollingUp(false);
+        //         } else if (window.scrollY > vH) {
+        //             setScrollingUp(true);
+        //         }
+        //     },
+        //     onDown: () => {
+        //         if (window.scrollY > vH) {
+        //             setScrollingUp(false);
+        //         }
+        //     },
+        // });
+    }, []);
 
     const styles = {
         left: cursorX + 'px',
