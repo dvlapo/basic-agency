@@ -2,7 +2,8 @@ import Home from './pages/Home';
 import './styles/App.scss';
 import { useEffect, useState } from 'react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/all';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+
 import Loader from './components/Loader';
 import initiativeImg01 from './assets/initiative-1.png';
 import initiativeImg02 from './assets/initiative-2.png';
@@ -76,7 +77,7 @@ function App() {
         const tl = gsap.timeline();
 
         tl.to(el, {
-            scrollTrigger: {
+            ScrollTrigger: {
                 trigger: el,
                 toggleClass: {
                     targets: [el, app],
