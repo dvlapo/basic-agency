@@ -10,6 +10,7 @@ function Initiative({ initiative }) {
             className={`${hover ? 'hover' : ''}`}
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
+            key={initiative.imgSrc}
         >
             <div className='top'>
                 <div className='card'>

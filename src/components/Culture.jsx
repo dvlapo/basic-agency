@@ -1,6 +1,6 @@
 import cultureLoop from '../assets/Culture-Loop_v1.mp4';
 import '../styles/components/culture.scss';
-import { useLayoutEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
@@ -8,14 +8,11 @@ gsap.registerPlugin(ScrollTrigger);
 function Culture() {
     const cultureRef = useRef(null);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         const el = cultureRef.current;
         const main = document.querySelector('main');
-        // console.log(el, main);
 
-        const tl = gsap.timeline();
-
-        tl.to(el, {
+        gsap.to(el, {
             scrollTrigger: {
                 trigger: el,
                 toggleClass: {
