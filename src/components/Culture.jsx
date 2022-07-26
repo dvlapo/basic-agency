@@ -23,7 +23,7 @@ function Culture() {
                 end: '50%',
             },
         });
-    });
+    }, []);
 
     return (
         <section className='culture' ref={cultureRef}>
