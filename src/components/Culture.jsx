@@ -2,14 +2,13 @@ import cultureLoop from '../assets/Culture-Loop_v1.mp4';
 import '../styles/components/culture.scss';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
 
 function Culture() {
     const cultureRef = useRef(null);
 
     useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
-
         const el = cultureRef.current;
         const main = document.querySelector('main');
         // console.log(el, main);
