@@ -14,7 +14,6 @@ function Home({
     setShowArrows,
     isNavOpen,
     setIsNavOpen,
-    mainRef,
 }) {
     return (
         <>
@@ -28,7 +27,7 @@ function Home({
             ) : (
                 <>
                     <Header setIsNavOpen={setIsNavOpen} />
-                    <main ref={mainRef}>
+                    <main>
                         <SeeTheWork />
                         <Featured
                             showArrows={showArrows}
