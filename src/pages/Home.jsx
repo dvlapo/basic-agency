@@ -38,7 +38,7 @@ function Home({
                         <News />
                     </main>
 
-                    {/* <Footer /> */}
+                    <Footer />
                 </>
             )}
         </>

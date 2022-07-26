@@ -114,6 +114,7 @@ function Header({ setIsNavOpen }) {
                     className='three-dots'
                     role='button'
                     onClick={() => setIsNavOpen(true)}
+                    aria-label='Open menu'
                 >
                     <svg
                         width='6'

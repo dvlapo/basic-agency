@@ -10,6 +10,7 @@
     z-index: 20;
     transition: 0.4s;
     user-select: none;
+    pointer-events: none;
 
     @media (max-width: 1000px) {
         display: none;

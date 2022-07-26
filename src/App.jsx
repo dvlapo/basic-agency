@@ -15,16 +15,6 @@ function App() {
     const [isNavOpen, setIsNavOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
-    // useEffect(() => {
-    //     gsap.registerPlugin(ScrollSmoother);
-
-    //     ScrollSmoother.create({
-    //         smooth: 1,
-    //         effects: true,
-    //         smoothTouch: 0.1,
-    //     });
-    // }, []);
-
     const [initiatives, setInitiatives] = useState([
         {
             idx: 1,
@@ -81,20 +71,20 @@ function App() {
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
 
-        const el = document.querySelector('.culture');
-        const app = document.querySelector('.App');
-        const tl = gsap.timeline();
-
         if (document.querySelector('.culture')) {
             gsap.set(['.culture'], {
                 visibility: 'visible',
             });
 
-            tl.to('.culture', {
+            const el = document.querySelector('.culture');
+            const app = document.querySelector('.App');
+            const tl = gsap.timeline();
+
+            tl.to(el, {
                 scrollTrigger: {
-                    trigger: '.culture',
+                    trigger: el,
                     toggleClass: {
-                        targets: ['.culture', app],
+                        targets: [el, app],
                         className: 'dark-theme',
                     },
                     start: 'top center',

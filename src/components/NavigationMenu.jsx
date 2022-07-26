@@ -3,8 +3,14 @@ import '../styles/components/navigationmenu.scss';
 import DragCursor from './DragCursor';
 
 function Initiative({ initiative }) {
+    const [hover, setHover] = useState(false);
+
     return (
-        <li>
+        <li
+            className={`${hover ? 'hover' : ''}`}
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+        >
             <div className='top'>
                 <div className='card'>
                     <div className='img-wrapper'>
@@ -41,7 +47,6 @@ function NavigationMenu({
     const [isOpen, setIsOpen] = useState(false);
 
     const [grabbed, setGrabbed] = useState(false);
-    const [hangCursor, setHangCursor] = useState(false);
     const [cursorX, setCursorX] = useState();
     const [cursorY, setCursorY] = useState();
     const [cursorStlyes, setCursorStyles] = useState({
@@ -54,11 +59,8 @@ function NavigationMenu({
         setCursorX(e.clientX);
         setCursorY(e.clientY);
 
-        let sliderOuter = document.querySelector('.initiatives');
-
         const cursor = document.querySelector('.cursor-container');
         const slider = document.querySelector('.initiatives');
-
         const sliderRect = slider.getBoundingClientRect();
 
         // center cursor
@@ -70,7 +72,7 @@ function NavigationMenu({
             left:
                 cursorX -
                 sliderRect.left +
-                sliderOuter.scrollLeft -
+                slider.scrollLeft -
                 cursorHalfWidth +
                 'px',
         });
@@ -186,8 +188,8 @@ function NavigationMenu({
             <ul
                 className='initiatives'
                 onMouseMove={(e) => {
-                    getMousePosition(e);
                     grabAndScroll(e);
+                    getMousePosition(e);
                 }}
                 onMouseLeave={() => {
                     setCursorStyles({
