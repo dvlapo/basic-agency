@@ -1,6 +1,9 @@
 import Home from './pages/Home';
 import './styles/App.scss';
 import { useEffect, useState } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
 
 import Loader from './components/Loader';
 import initiativeImg01 from './assets/initiative-1.png';
