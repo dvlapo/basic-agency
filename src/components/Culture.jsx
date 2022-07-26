@@ -1,6 +1,6 @@
 import cultureLoop from '../assets/Culture-Loop_v1.mp4';
 import '../styles/components/culture.scss';
-import { useEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 function Culture() {
     const cultureRef = useRef(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const el = cultureRef.current;
         const main = document.querySelector('main');
         // console.log(el, main);
@@ -24,10 +24,9 @@ function Culture() {
                 },
                 start: 'top center',
                 end: '50%',
-                lazy: false,
             },
         });
-    }, []);
+    });
 
     return (
         <section className='culture' ref={cultureRef}>
