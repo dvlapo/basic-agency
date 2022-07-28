@@ -20,7 +20,7 @@ function Culture() {
                     className: 'dark-theme',
                 },
                 start: 'top center',
-                end: '100%',
+                end: '75%',
             },
         });
     });
