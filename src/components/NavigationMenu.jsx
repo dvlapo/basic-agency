@@ -41,11 +41,12 @@ function Initiative({ initiative }) {
 
 function NavigationMenu({
     initiatives,
+    isNavOpen,
     setIsNavOpen,
     showArrows,
     setShowArrows,
 }) {
-    const [isOpen, setIsOpen] = useState(false);
+    const [m, setIsOpen] = useState(false);
 
     const [grabbed, setGrabbed] = useState(false);
     const [cursorX, setCursorX] = useState();
@@ -96,7 +97,7 @@ function NavigationMenu({
     }, []);
 
     return (
-        <div className={`nav-menu ${isOpen ? 'is-open' : ''}`}>
+        <div className={`nav-menu ${isNavOpen ? 'is-open' : ''}`}>
             <div className='mask'></div>
             <div className='menu-header'>
                 <a href='/'>

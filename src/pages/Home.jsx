@@ -17,30 +17,28 @@ function Home({
 }) {
     return (
         <>
-            {isNavOpen ? (
-                <NavigationMenu
-                    setIsNavOpen={setIsNavOpen}
-                    initiatives={initiatives}
-                    showArrows={showArrows}
-                    setShowArrows={setShowArrows}
-                />
-            ) : (
-                <>
-                    <Header setIsNavOpen={setIsNavOpen} />
-                    <main>
-                        <SeeTheWork />
-                        <Featured
-                            showArrows={showArrows}
-                            setShowArrows={setShowArrows}
-                        />
+            <NavigationMenu
+                setIsNavOpen={setIsNavOpen}
+                initiatives={initiatives}
+                showArrows={showArrows}
+                setShowArrows={setShowArrows}
+                isNavOpen={isNavOpen}
+            />
+            <>
+                <Header setIsNavOpen={setIsNavOpen} />
+                <main>
+                    <SeeTheWork />
+                    <Featured
+                        showArrows={showArrows}
+                        setShowArrows={setShowArrows}
+                    />
 
-                        <Culture />
-                        <News />
-                    </main>
+                    <Culture />
+                    <News />
+                </main>
 
-                    <Footer />
-                </>
-            )}
+                <Footer />
+            </>
         </>
     );
 }

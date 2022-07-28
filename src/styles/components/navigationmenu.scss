@@ -6,10 +6,14 @@
     background-color: $black;
     color: $pink;
     padding: min(8rem, 6vw);
+    transform: translateX(100vw);
     display: flex;
     flex-direction: column;
+    z-index: 500;
 
     &.is-open {
+        transform: translateX(0);
+
         li {
             opacity: 1;
         }
@@ -124,7 +128,7 @@
             position: absolute;
             inset: 0;
             background-color: $black;
-            z-index: 4;
+            z-index: 600;
             transition: 1s;
             transform-origin: left;
         }
@@ -270,6 +274,12 @@
                         max-width: 100%;
                     }
                 }
+            }
+
+            @media (max-width: 1000px) {
+                display: flex !important;
+                flex-direction: column;
+                overflow-y: scroll;
             }
         }
 

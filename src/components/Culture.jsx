@@ -16,7 +16,7 @@ function Culture() {
             scrollTrigger: {
                 trigger: el,
                 toggleClass: {
-                    targets: [main, el],
+                    targets: [main],
                     className: 'dark-theme',
                 },
                 start: 'top center',
