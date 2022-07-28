@@ -214,8 +214,8 @@ function NavigationMenu({
                     showArrows={showArrows}
                     setShowArrows={setShowArrows}
                 />
-                {initiatives.map((initiative) => {
-                    return <Initiative initiative={initiative} />;
+                {initiatives.map((initiative, idx) => {
+                    return <Initiative initiative={initiative} key={idx} />;
                 })}
             </ul>
 
