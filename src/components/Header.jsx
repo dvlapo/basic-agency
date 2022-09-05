@@ -158,10 +158,7 @@ function Header({ setIsNavOpen }) {
                 <source type='video/mp4' />
             </video>
 
-            <div
-                className='playreel-container'
-                // style={{ marginTop: `${navHeight}px` }}
-            >
+            <div className='playreel-container'>
                 <PlayReelBtn cursorStyles={cursorStyles} />
             </div>
         </header>

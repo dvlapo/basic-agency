@@ -42,8 +42,26 @@
         display: flex;
         gap: min(9rem, 10vw);
         user-select: none;
-        // padding-bottom: min(12rem, 14vw);
         transition: 0.8s;
+        overflow-x: scroll;
+        width: 95vw;
+        padding-bottom: 4rem;
+        padding-right: 4rem;
+
+        @media (min-width: 1000px) {
+            &::-webkit-scrollbar {
+                height: 3px;
+                width: 3px;
+            }
+
+            &::-webkit-scrollbar-track {
+                background: $white;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background: $black;
+            }
+        }
 
         article {
             min-width: min(300px, 62vw);
@@ -109,7 +127,7 @@
             height: 100%;
             background-color: $black;
             position: absolute;
-            transition: 0.8s;
+            // transition: 0.8s;
             left: 0;
 
             @media (max-width: 768px) {

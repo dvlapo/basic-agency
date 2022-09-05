@@ -51,7 +51,6 @@ function Featured({ showArrows, setShowArrows }) {
         top: '50%',
         right: '5%',
     });
-    const [scrollbarOffset, setScrollbarOffset] = useState(0);
 
     const containerRef = useRef(null);
 
@@ -68,11 +67,11 @@ function Featured({ showArrows, setShowArrows }) {
 
     // fns
     function grabAndScroll(e) {
-        let sliderOuter = document.querySelector('.slider-outer');
+        let slider = document.querySelector('.slider');
         if (grabbed != true) {
             return;
         } else {
-            sliderOuter.scrollLeft -= e.movementX;
+            slider.scrollLeft -= e.movementX;
             setScrollbarOffset(sliderOuter.scrollLeft * 1.5);
         }
     }
@@ -155,13 +154,6 @@ function Featured({ showArrows, setShowArrows }) {
                         );
                     })}
                 </div>
-            </div>
-
-            <div className='scroll-bar-outer'>
-                <div
-                    className='scroll-bar-inner'
-                    style={{ left: scrollbarOffset }}
-                ></div>
             </div>
         </section>
     );
